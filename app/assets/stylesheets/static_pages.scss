@@ -1,0 +1,112 @@
+// Place all the styles related to the staticPages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+  background: #43cea2; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, #43cea2 , #185a9d); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #43cea2 , #185a9d); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  min-height: 100vh;
+  padding-bottom: 1em;
+
+  a {
+    cursor: pointer;
+  }
+}
+
+.project.panel-info {
+
+  >.panel-heading {
+    background: rgba(0, 100, 255, 0.19);
+    color: #333333;
+
+    input.title {
+      pointer-events: none;
+      background: none;
+      border: none;
+    }
+  }
+
+  .panel-body {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .body-header {
+    color: #31b0d5;
+    background: #e4e4e4;
+    padding: 10px 5px 10px 0;
+
+    .new-task {
+      display: inline-block;
+      vertical-align: middle;
+      width: calc(100% - 25px);
+    }
+
+    .form-group {
+      width: 100%;
+      margin-bottom: 0;
+
+      input {
+        width: calc(100% - 60px);
+        display: inline-block;
+      }
+    }
+  }
+
+  .task {
+    padding: 10px 0px 10px 0;
+    &:not(:last-child) {
+      border-bottom: 1px solid #e4e4e4;
+    }
+
+
+    &:hover {
+      background: rgba(0, 100, 255, 0.19);
+    }
+
+    .text {
+      &.done {
+        a {
+          color: #999999;
+          text-decoration: line-through;
+        }
+        .order {display:none}
+      }
+
+      a {
+        cursor: pointer;
+      }
+
+      .order {
+        font-size: .8em;
+
+        &.unimportant {color:#777}
+        &.normal {color: #207e20}
+        &.important {color: #959900}
+        &.very_important {color: #d9534f}
+      }
+    }
+  }
+
+  .icon {
+    display: inline-block;
+    vertical-align: middle;
+    width: 20px;
+  }
+
+  .text {
+    display: inline-block;
+    width: calc(100% - 100px);
+  }
+
+  .actions {
+    display: inline-block;
+    text-align: right;
+    width: 70px;
+    >span:hover {
+      cursor: pointer;
+      color: #31b0d5;
+    }
+  }
+}

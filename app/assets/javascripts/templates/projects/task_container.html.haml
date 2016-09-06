@@ -1,0 +1,12 @@
+.row.task
+  .col-sm-12
+    .icon
+      %input{type:'checkbox', 'ng-model': 'task.done', 'ng-change':'save()'}
+    .text{'ng-class':"{done:task.done}"}
+      %a{'ui-sref':'task(task)'} {{task.title}}
+      %span.order{class:'{{task.status}}'} {{task.status|humanize}}
+    .actions.text-right
+      %span.glyphicon.glyphicon-arrow-up{'ng-click':"order('up')",'ng-hide':'task.done'}
+      %span.glyphicon.glyphicon-arrow-down{'ng-click':"order('down')", 'ng-hide':'task.done'}
+      %span.glyphicon.glyphicon-edit{'ui-sref':'task(task)'}
+      %span.glyphicon.glyphicon-trash{'ng-click':'delete()'}

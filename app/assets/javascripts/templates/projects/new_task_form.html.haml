@@ -1,0 +1,4 @@
+%form.form-inline{'ng-submit':'createTask(newTask)'}
+  .form-group
+    %input.form-control{'ng-model':'newTask.title'}
+    %button.btn.btn-info{'ng-disabled':'!isValid()'} Add

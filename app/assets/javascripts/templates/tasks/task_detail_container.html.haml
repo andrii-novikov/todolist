@@ -1,0 +1,49 @@
+%table.table.table-bordered
+  %tr.info
+    %td
+      Title
+    %td
+      %input.form-control{'ng-model':'task.title', 'ng-change': 'save()'}
+  %tr.warning
+    %td
+      Status
+    %td
+      %select{ 'ng-model':'task.status', 'ng-change':'save()' }
+        %option{ 'ng-repeat':'status in statuses', 'value': '{{status}}', }
+          {{status|humanize}}
+
+  %tr.info
+    %td
+      Deadline
+    %td
+      %p.input-group
+        %input.form-control{ 'ng-model': 'newDeadline',
+                             'ng-change': 'deadlineChange()',
+                             'close-text': 'Close',
+                             'datepicker-options': 'dateOptions',
+                             'is-open': 'popup.opened',
+                             'type': 'text',
+                             'uib-datepicker-popup': '{{format}}' }
+        %span.input-group-btn
+          %button.btn.btn-default{'ng-click': 'open()', type: 'button'}
+            %i.glyphicon.glyphicon-calendar
+  %tr.warning
+    %td
+      Completed
+    %td
+      %button.btn.btn-info.glyphicon{'ng-class':'completedClass()','ng-click':'toggleCompleted()'}
+  %tr.info
+    %td
+      Created At
+    %td
+      {{task.created_at|date}}
+.row.text-center
+  %button.btn.btn-success{'ui-sref':'home'}
+    %span.glyphicon.glyphicon-floppy-save
+    GO BACK
+  %button.btn.btn-danger{'ng-click':'delete()'}
+    %span.glyphicon.glyphicon-trash
+    DELETE TASK
+%br
+%div{'flow-init': "flowOptions"}
+  %task-comments{task:'task', '$flow':'$flow'}

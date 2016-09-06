@@ -1,0 +1,8 @@
+.text-center{'ng-hide':'user.signedIn'}
+  %h1 Welcome to ToDolists!
+  %h2
+    To create ToDos please
+    %a{'ui-sref':'login'} Sign In
+    or
+    %a{'ui-sref':'register'} Sign Up
+.ng-include{src:"'projects/index.html'", 'ng-show':'user.signedIn'}

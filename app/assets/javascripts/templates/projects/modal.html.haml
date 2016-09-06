@@ -1,0 +1,7 @@
+%div.modal-header
+  %h3.modal-title#modal-title Enter project title:
+%div.modal-body
+  %input{'ng-model':'title'}
+%div.modal-footer
+  %button.btn.btn-primary{type:"button", 'ng-click':"ok()", 'ng-disabled':'!isValid()'} OK
+  %button.btn.btn-warning{type:"button", 'ng-click':"cancel()"} Cancel

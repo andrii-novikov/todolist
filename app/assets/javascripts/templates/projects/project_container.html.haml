@@ -1,0 +1,19 @@
+.panel.panel-info.project{'id':'{{project.id}}'}
+  .panel-heading
+    .icon
+      .glyphicon.glyphicon-calendar
+    .text
+      %input.title{'ng-model': 'project.title', 'ng-blur':'save()'}
+    .actions
+      %span.glyphicon.glyphicon-pencil{'ng-click':'edit()'}
+      %span.glyphicon.glyphicon-trash{'ng-click':'delete(project)'}
+
+  .panel-body
+    .row.body-header
+      .col-sm-12
+        .icon
+          .glyphicon.glyphicon-plus
+        .new-task
+          %new-task-form{project:'project'}
+
+    %task-container{task:'task', project: 'project', 'ng-repeat':"task in project.tasks | orderBy: ['done','-order']"}

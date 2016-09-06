@@ -1,0 +1,14 @@
+%nav.navbar.navbar-default
+  .container-fluid
+    .navbar-header
+      %span.navbar-brand
+        %a{:href => "#"} Todo
+        %span{'ng-show':'title()'}  | {{title() | humanize}}
+
+    %ul.nav.navbar-nav.navbar-right
+      %li{'ng-hide': 'user.signedIn'}
+        %a{'ui-sref': 'login'} Log In
+      %li{'ng-hide': 'user.signedIn'}
+        %a{'ui-sref': 'register'} Register
+      %li{'ng-show': 'user.signedIn'}
+        %a{'ng-click':'signOut()'} Log Out({{user.username || user.email}})
