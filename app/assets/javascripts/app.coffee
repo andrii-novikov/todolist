@@ -12,6 +12,13 @@ app = angular.module('app', [
   ($stateProvider, $urlRouterProvider, FlashProvider, FacebookProvider, $authProvider)->
     $urlRouterProvider.otherwise("/");
 
+    unregisterAccess = access: ['$auth', '$state', ($auth, $state) ->
+      $auth.validateUser().then(
+        -> $state.go('home')
+        -> true
+      )
+    ]
+
     $stateProvider
     .state('home', {
       url: '/'
@@ -39,15 +46,19 @@ app = angular.module('app', [
       url: '/login'
       templateUrl: 'users/login.html'
       controller: 'AuthController'
+      resolve: unregisterAccess
+
     })
     .state('register', {
       url: '/register'
       templateUrl: 'users/register.html'
       controller: 'AuthController'
+      resolve: unregisterAccess
     })
 
     $authProvider.configure({
       apiUrl: 'http://localhost:3000'
+      omniauthWindowType: 'newWindow'
     });
 
     FlashProvider.setTimeout(10000);
@@ -57,6 +68,7 @@ app = angular.module('app', [
 
 ]).run(['$rootScope', 'Flash', '$http', '$cookieStore', ($rootScope, Flash, $http, $cookieStore)->
   $rootScope.$on('$stateChangeStart', ()-> Flash.clear())
-  $http.defaults.headers.common = _.merge($http.defaults.headers.common, $cookieStore.get('auth_headers'))
-  console.log($http.defaults.headers.common)
+  $rootScope.updateHeaders = ->
+    $http.defaults.headers.common = _.merge($http.defaults.headers.common, $cookieStore.get('auth_headers'))
+  $rootScope.updateHeaders()
 ])
