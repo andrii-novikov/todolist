@@ -7,8 +7,4 @@ class ApplicationController < ActionController::Base
   def angular
     render 'layouts/application'
   end
-
-  def current_user
-    super || User.find_by_uid(request.headers['uid'])
-  end
 end
