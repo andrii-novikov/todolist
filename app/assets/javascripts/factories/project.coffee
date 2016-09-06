@@ -1,7 +1,7 @@
 app = angular.module('app');
 
 app.factory('Project', ($resource)->
-  return $resource('/projects/:id.json', { id:'@id' }, {
+  return $resource('/projects/:id.json', { id:'@id'}, {
     save: { method: 'PUT' }
     create: {method:'POST'},
     query:

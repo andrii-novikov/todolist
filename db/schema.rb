@@ -10,10 +10,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160906100518) do
+ActiveRecord::Schema.define(version: 20160906143059) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comments", force: :cascade do |t|
+    t.string   "text"
+    t.integer  "task_id"
+    t.string   "attachment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["task_id"], name: "index_comments_on_task_id", using: :btree
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.string   "title"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_projects_on_user_id", using: :btree
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.string   "title"
+    t.integer  "status",     default: 1
+    t.datetime "deadline"
+    t.boolean  "done"
+    t.integer  "project_id"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.index ["project_id"], name: "index_tasks_on_project_id", using: :btree
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "provider",               default: "email", null: false
@@ -43,4 +71,7 @@ ActiveRecord::Schema.define(version: 20160906100518) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true, using: :btree
   end
 
+  add_foreign_key "comments", "tasks"
+  add_foreign_key "projects", "users"
+  add_foreign_key "tasks", "projects"
 end

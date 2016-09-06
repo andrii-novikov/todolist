@@ -25,4 +25,5 @@
 //= require angular-facebook
 //= require ng-token-auth
 //= require angular-cookie
+//= require angular-cookies
 //= require_tree .

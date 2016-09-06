@@ -7,6 +7,7 @@ app = angular.module('app', [
   'ngFlash'
   'facebook'
   'ng-token-auth'
+  'ngCookies'
 ]).config(['$stateProvider', '$urlRouterProvider', 'FlashProvider', 'FacebookProvider', '$authProvider'
   ($stateProvider, $urlRouterProvider, FlashProvider, FacebookProvider, $authProvider)->
     $urlRouterProvider.otherwise("/");
@@ -53,8 +54,9 @@ app = angular.module('app', [
     FlashProvider.setShowClose(true);
 
     FacebookProvider.init('1091922357559241')
-]).run(['$rootScope', 'Flash', ($rootScope, Flash)->
-  $rootScope.$on('$stateChangeStart', ()->
-    Flash.clear()
-  )
+
+]).run(['$rootScope', 'Flash', '$http', '$cookieStore', ($rootScope, Flash, $http, $cookieStore)->
+  $rootScope.$on('$stateChangeStart', ()-> Flash.clear())
+  $http.defaults.headers.common = _.merge($http.defaults.headers.common, $cookieStore.get('auth_headers'))
+  console.log($http.defaults.headers.common)
 ])
