@@ -34,10 +34,19 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry-stack_explorer'
   gem 'pry-byebug'
-  gem 'rspec'
   gem 'rspec-rails'
-  gem "awesome_print"
+  gem 'database_cleaner'
   gem 'shoulda-matchers'
+  gem 'factory_girl_rails'
+  gem 'capybara'
+  gem 'rails-controller-testing', git: 'https://github.com/rails/rails-controller-testing'
+  gem 'spring-commands-rspec', git: 'https://github.com/jonleighton/spring-commands-rspec'
+  gem 'poltergeist'
+  gem 'selenium-webdriver'
+  gem 'ffaker'
+  gem 'rubocop'
+  gem 'simplecov'
+  gem "awesome_print"
 end
 
 group :development do

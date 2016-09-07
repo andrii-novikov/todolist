@@ -2,15 +2,10 @@ class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :update, :destroy]
 
   def index
-    # @projects = Project.all
-    puts 'user'
-    p current_user
-    @projects = current_user.try(:projects) || []
-    # pry.binding
+   @projects = current_user.try(:projects) || []
   end
 
   def create
-    p project_params
     @project = Project.create(project_params)
   end
 
