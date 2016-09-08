@@ -27,6 +27,7 @@ class Task < ApplicationRecord
     super(attributes.except(:order))
   end
 
+  private
   def order_methods
     ['order_up','order_down']
   end

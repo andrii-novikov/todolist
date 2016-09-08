@@ -1,5 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Project, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it {is_expected.to belong_to :user}
+  it {is_expected.to have_many(:tasks).dependent(:destroy)}
+  it {is_expected.to validate_presence_of :user}
+  it {is_expected.to validate_presence_of :title}
 end
