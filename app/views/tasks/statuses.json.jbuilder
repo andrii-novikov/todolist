@@ -1,1 +1,1 @@
-json.array! (@statuses.keys)
+json.array! @statuses

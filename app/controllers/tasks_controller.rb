@@ -19,7 +19,7 @@ class TasksController < ApplicationController
   end
 
   def statuses
-    @statuses = Task.statuses
+    @statuses = Task.statuses.keys
   end
 
   private
