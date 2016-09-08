@@ -7,7 +7,7 @@ app.factory('unauthorizedInterseptor', ['$q', '$injector', 'Flash'
         defer = $q.defer()
         if rejection.status == 401
           $injector.get('$state').go('login').then ->
-            Flash.create('danger', rejection.data.error);
+            Flash.create('danger', rejection.data.error) if rejection.data.error
         defer.reject rejection
         defer.promise
     }

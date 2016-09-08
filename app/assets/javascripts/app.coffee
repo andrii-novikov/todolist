@@ -59,7 +59,7 @@ app = angular.module('app', [
     })
 
     $authProvider.configure({
-      apiUrl: 'http://localhost:3000'
+      apiUrl: ''
       omniauthWindowType: 'newWindow'
     });
 

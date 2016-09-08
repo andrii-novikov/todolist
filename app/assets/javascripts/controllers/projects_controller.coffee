@@ -3,7 +3,6 @@ app = angular.module('app');
 app.controller("ProjectsController", [ '$scope', 'Project', '$uibModal', 'projects'
   ($scope, Project, $uibModal, projects)->
     $scope.projects = projects
-    console.log($scope.projects)
     $scope.delete = (project)->
       Project.remove({ id:project.id }, () ->
         $scope.projects = _.without($scope.projects, project)
