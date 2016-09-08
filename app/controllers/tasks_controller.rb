@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+  authorize_resource
   before_action :set_task, only: [:show, :update, :destroy]
 
   def create
@@ -6,6 +7,7 @@ class TasksController < ApplicationController
   end
 
   def show
+    authorize! :show, @task
   end
 
   def update

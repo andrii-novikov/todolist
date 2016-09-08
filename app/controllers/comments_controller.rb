@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  authorize_resource
   before_action :set_comment, except: :create
 
   def create

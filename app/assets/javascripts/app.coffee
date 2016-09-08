@@ -8,9 +8,11 @@ app = angular.module('app', [
   'facebook'
   'ng-token-auth'
   'ngCookies'
-]).config(['$stateProvider', '$urlRouterProvider', 'FlashProvider', 'FacebookProvider', '$authProvider'
-  ($stateProvider, $urlRouterProvider, FlashProvider, FacebookProvider, $authProvider)->
+]).config(['$stateProvider', '$urlRouterProvider', 'FlashProvider', 'FacebookProvider', '$authProvider', '$httpProvider'
+  ($stateProvider, $urlRouterProvider, FlashProvider, FacebookProvider, $authProvider, $httpProvider)->
     $urlRouterProvider.otherwise("/");
+
+    $httpProvider.interceptors.push('unauthorizedInterseptor')
 
     unregisterAccess = access: ['$auth', '$state', ($auth, $state) ->
       $auth.validateUser().then(
