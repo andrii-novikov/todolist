@@ -14,8 +14,8 @@ feature 'Home page', js:true do
     end
   end
 
-  context 'Authorized user', fix: true  do
-    let!(:user) {create(:user_with_projects, uid:'a@a.ru', email: 'a@a.ru', password: '12345678')}
+  context 'Authorized user' do
+    let!(:user) {create(:user_with_projects, uid:'a@a.ru', email: 'a@a.ru', password: default_user_password)}
 
     scenario 'visit home page' do
       login(user)

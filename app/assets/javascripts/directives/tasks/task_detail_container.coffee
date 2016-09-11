@@ -7,8 +7,8 @@ app.directive('taskDetailContainer'
         'task': '='
       }
       templateUrl: 'tasks/task_detail_container.html',
-      controller: ['$scope', 'Task'
-        ($scope, Task)->
+      controller: ['$scope', 'Task', '$cookieStore'
+        ($scope, Task, $cookieStore)->
           $scope.statuses = Task.statuses();
           $scope.newDeadline = if $scope.task.deadline then new Date($scope.task.deadline);
           $scope.format = 'dd MMMM yyyy'
@@ -46,6 +46,8 @@ app.directive('taskDetailContainer'
             fileParameterName: 'attachment'
             testChunks:false
             singleFile: true
+            attributes: {id:'fileInput'}
+            headers: $cookieStore.get('auth_headers')
       ]
     }
 )

@@ -8,8 +8,21 @@ app = angular.module('app', [
   'facebook'
   'ng-token-auth'
   'ngCookies'
-]).config(['$stateProvider', '$urlRouterProvider', 'FlashProvider', 'FacebookProvider', '$authProvider', '$httpProvider'
-  ($stateProvider, $urlRouterProvider, FlashProvider, FacebookProvider, $authProvider, $httpProvider)->
+]).config([
+  '$stateProvider',
+  '$urlRouterProvider',
+  'FlashProvider',
+  'FacebookProvider',
+  '$authProvider',
+  '$httpProvider',
+  (
+    $stateProvider,
+    $urlRouterProvider,
+    FlashProvider,
+    FacebookProvider,
+    $authProvider,
+    $httpProvider,
+  ) ->
     $urlRouterProvider.otherwise("/");
 
     $httpProvider.interceptors.push('unauthorizedInterseptor')
@@ -68,9 +81,15 @@ app = angular.module('app', [
 
     FacebookProvider.init('1091922357559241')
 
-]).run(['$rootScope', 'Flash', '$http', '$cookieStore', ($rootScope, Flash, $http, $cookieStore)->
-  $rootScope.$on('$stateChangeStart', ()-> Flash.clear())
-  $rootScope.updateHeaders = ->
-    $http.defaults.headers.common = _.merge($http.defaults.headers.common, $cookieStore.get('auth_headers'))
-  $rootScope.updateHeaders()
+]).run([
+  '$rootScope',
+  'Flash',
+  '$http',
+  '$cookieStore',
+  'flowFactory',
+  ($rootScope, Flash, $http, $cookieStore)->
+    $rootScope.$on('$stateChangeStart', ()-> Flash.clear())
+    $rootScope.updateHeaders = ->
+      $http.defaults.headers.common = _.merge($http.defaults.headers.common, $cookieStore.get('auth_headers'))
+    $rootScope.updateHeaders()
 ])

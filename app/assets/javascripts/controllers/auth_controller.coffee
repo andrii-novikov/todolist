@@ -17,8 +17,9 @@ app.controller("AuthController", [ '$scope', '$auth', '$state','Flash', '$rootSc
     );
 
     $scope.$on('auth:registration-email-error', (ev, reason) ->
-      if user
-        for fieldname, message of reason.errors
+      if reason
+        Flash.create('danger', reason.errors[0]) if reason && reason.errors && reason.errors[0]
+      for fieldname, message of reason.errors
           field = $(".form-group.#{fieldname}")
           field.addClass('has-error')
           field.find('.help-block').html("#{_.capitalize(fieldname)} #{message}")

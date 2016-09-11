@@ -3,12 +3,12 @@
     %td
       Title
     %td
-      %input.form-control{'ng-model':'task.title', 'ng-change': 'save()'}
+      %input.form-control.title{'ng-model':'task.title', 'ng-change': 'save()'}
   %tr.warning
     %td
       Status
     %td
-      %select{ 'ng-model':'task.status', 'ng-change':'save()' }
+      %select.status{ 'ng-model':'task.status', 'ng-change':'save()' }
         %option{ 'ng-repeat':'status in statuses', 'value': '{{status}}', }
           {{status|humanize}}
 
@@ -17,7 +17,7 @@
       Deadline
     %td
       %p.input-group
-        %input.form-control{ 'ng-model': 'newDeadline',
+        %input.form-control.deadline{ 'ng-model': 'newDeadline',
                              'ng-change': 'deadlineChange()',
                              'close-text': 'Close',
                              'datepicker-options': 'dateOptions',
@@ -25,23 +25,23 @@
                              'type': 'text',
                              'uib-datepicker-popup': '{{format}}' }
         %span.input-group-btn
-          %button.btn.btn-default{'ng-click': 'open()', type: 'button'}
+          %button.deadline.btn.btn-default{'ng-click': 'open()', type: 'button'}
             %i.glyphicon.glyphicon-calendar
   %tr.warning
     %td
       Completed
     %td
-      %button.btn.btn-info.glyphicon{'ng-class':'completedClass()','ng-click':'toggleCompleted()'}
+      %button.completed.btn.btn-info.glyphicon{'ng-class':'completedClass()','ng-click':'toggleCompleted()'}
   %tr.info
     %td
       Created At
     %td
       {{task.created_at|date}}
 .row.text-center
-  %button.btn.btn-success{'ui-sref':'home'}
+  %button.go-back.btn.btn-success{'ui-sref':'home'}
     %span.glyphicon.glyphicon-floppy-save
     GO BACK
-  %button.btn.btn-danger{'ng-click':'delete()'}
+  %button.delete.btn.btn-danger{'ng-click':'delete()'}
     %span.glyphicon.glyphicon-trash
     DELETE TASK
 %br
