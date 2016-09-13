@@ -1,13 +1,12 @@
 class TasksController < ApplicationController
-  authorize_resource
-  before_action :set_task, only: [:show, :update, :destroy]
+  load_and_authorize_resource :project, thorough: :current_user
+  load_and_authorize_resource :task
 
   def create
-    @task = Task.create(task_params)
+    @task.save
   end
 
   def show
-    authorize! :show, @task
   end
 
   def update
@@ -23,12 +22,7 @@ class TasksController < ApplicationController
   end
 
   private
-
   def task_params
-    params.fetch(:task,{}).permit(:title, :project_id, :deadline, :done, :status, :order)
-  end
-
-  def set_task
-    @task = Task.find_by_id(params[:id])
+    params.fetch(:task).permit(:title, :project_id, :deadline, :done, :status, :order)
   end
 end

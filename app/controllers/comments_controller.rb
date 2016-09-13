@@ -1,25 +1,21 @@
 class CommentsController < ApplicationController
-  authorize_resource
-  before_action :set_comment, except: :create
+  load_and_authorize_resource :task
+  load_and_authorize_resource :comment, through: :task
 
   def create
-    @comment = Comment.create(comments_params)
+    @comment.save
   end
 
   def destroy
-    @comment.try(:destroy)
+    @comment.destroy
   end
 
   def update
-    @comment.update(comments_params.except(:id, :task_id))
+    @comment.update(comment_params.except(:id, :task_id))
   end
 
   private
-  def set_comment
-    @comment = Comment.find_by(comments_params.except(:text, :attachment))
-  end
-
-  def comments_params
-    params.permit(:id, :task_id, :text, :attachment)
+  def comment_params
+    params.permit(:task_id, :text, :attachment)
   end
 end

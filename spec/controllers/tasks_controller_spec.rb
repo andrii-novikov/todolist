@@ -26,7 +26,7 @@ RSpec.describe TasksController, type: :controller do
   end
 
   describe 'POST create' do
-    let(:attrs) {attributes_for(:task, project:project)}
+    let(:attrs) {attributes_for(:task, project_id:project.id)}
     before do
       post :create, format: :json, params: {task: attrs}
     end
