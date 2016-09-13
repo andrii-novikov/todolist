@@ -5,7 +5,7 @@ set :application,     'todolist'
 set :user,            'bookstore'
 set :puma_threads,    [4, 16]
 set :puma_workers,    0
-set :branch, 'deployment'#ENV['BRANCH'] ? ENV['BRANCH'] : `git rev-parse --abbrev-ref HEAD`
+set :branch, 'development'#ENV['BRANCH'] ? ENV['BRANCH'] : `git rev-parse --abbrev-ref HEAD`
 # puts `git rev-parse --abbrev-ref HEAD`
 # exit
 # Don't change these unless you know what you're doing

@@ -22,6 +22,7 @@ gem 'bower-rails'
 gem 'angular-rails-templates'
 gem 'omniauth-facebook'
 gem 'figaro'
+gem 'capistrano-figaro-yml'
 
 group :development, :test do
   gem 'pry'
