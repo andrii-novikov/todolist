@@ -21,6 +21,7 @@ gem 'haml-rails'
 gem 'bower-rails'
 gem 'angular-rails-templates'
 gem 'omniauth-facebook'
+gem 'figaro'
 
 group :development, :test do
   gem 'pry'

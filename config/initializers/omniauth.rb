@@ -1,3 +1,3 @@
 Rails.application.config.middleware.use OmniAuth::Builder do
-  provider :facebook, '1091922357559241', '363e868abe8400060b9d670836ab0bd6'
+  provider :facebook, Figaro.env.facebook_app_id, Figaro.env.facebook_app_secret
 end
