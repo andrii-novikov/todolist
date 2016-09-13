@@ -23,21 +23,24 @@ gem 'angular-rails-templates'
 gem 'omniauth-facebook'
 
 group :development, :test do
-  gem 'capistrano'
-  gem 'capistrano-bundler'
-  gem 'capistrano-rails'
-  gem 'capistrano-rails-console'
-  gem 'capistrano-rvm'
-  gem 'capistrano-sidekiq'
   gem 'pry'
   gem 'pry-remote'
   gem 'pry-rails'
   gem 'pry-stack_explorer'
   gem 'pry-byebug'
-  gem 'rspec'
   gem 'rspec-rails'
-  gem "awesome_print"
+  gem 'database_cleaner'
   gem 'shoulda-matchers'
+  gem 'factory_girl_rails'
+  gem 'capybara'
+  gem 'rails-controller-testing', git: 'https://github.com/rails/rails-controller-testing'
+  gem 'spring-commands-rspec', git: 'https://github.com/jonleighton/spring-commands-rspec'
+  gem 'poltergeist'
+  gem 'selenium-webdriver'
+  gem 'ffaker'
+  gem 'rubocop'
+  gem 'simplecov'
+  gem "awesome_print"
 end
 
 group :development do
@@ -45,4 +48,10 @@ group :development do
   gem 'listen', '~> 3.0.5'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'capistrano',         require: false
+  gem 'capistrano-rvm',     require: false
+  gem 'capistrano-rails',   require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano3-puma', require: false
+  gem 'capistrano-rails-collection'
 end

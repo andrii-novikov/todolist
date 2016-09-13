@@ -1,0 +1,1 @@
+json.msg @comment.destroyed? ? 'Ok' : @comment.errors.full_messages

@@ -1,0 +1,1 @@
+json.msg @task.destroyed? ? 'Success' : 'Error'

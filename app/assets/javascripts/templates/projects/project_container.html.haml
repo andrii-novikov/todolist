@@ -16,4 +16,7 @@
         .new-task
           %new-task-form{project:'project'}
 
-    %task-container{task:'task', project: 'project', 'ng-repeat':"task in project.tasks | orderBy: ['done','-order']"}
+    %task-container{ task:'task',
+                     project: 'project',
+                     'ng-repeat':"task in project.tasks | orderBy: ['done','-order']",
+                     id: '{{task.id}}' }
