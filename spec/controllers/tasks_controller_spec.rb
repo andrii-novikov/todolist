@@ -1,12 +1,13 @@
+# frozen_string_literal: true
 require 'rails_helper'
 
 RSpec.describe TasksController, type: :controller do
-  let(:user) {create(:user)}
-  let!(:project) {create(:project_with_tasks, user:user)}
-  let(:task) {project.tasks.first}
+  let(:user) { create(:user) }
+  let!(:project) { create(:project_with_tasks, user: user) }
+  let(:task) { project.tasks.first }
 
   before do
-    allow(controller).to receive(:current_user) {user}
+    allow(controller).to receive(:current_user) { user }
   end
 
   describe 'GET show' do
@@ -26,9 +27,9 @@ RSpec.describe TasksController, type: :controller do
   end
 
   describe 'POST create' do
-    let(:attrs) {attributes_for(:task, project_id:project.id)}
+    let(:attrs) { attributes_for(:task, project_id: project.id) }
     before do
-      post :create, format: :json, params: {task: attrs}
+      post :create, format: :json, params: { task: attrs }
     end
 
     it 'render :create' do
@@ -41,14 +42,14 @@ RSpec.describe TasksController, type: :controller do
   end
 
   describe 'PUT update' do
-    let(:new_title) {'new_title'}
+    let(:new_title) { 'new_title' }
     before do
       put :update,
           format: :json,
-          params: { id:task.id, task: { title: new_title }}
+          params: { id: task.id, task: { title: new_title } }
     end
 
-    it 'render :update'do
+    it 'render :update' do
       expect(response).to render_template(:update)
     end
 
@@ -59,7 +60,7 @@ RSpec.describe TasksController, type: :controller do
 
   describe 'DELETE destroy' do
     let(:action) do
-      post :destroy, format: :json, params: {id:task.id}
+      post :destroy, format: :json, params: { id: task.id }
     end
 
     it 'render :destroy' do
@@ -68,7 +69,7 @@ RSpec.describe TasksController, type: :controller do
     end
 
     it 'delete task' do
-      expect {action}.to change {project.tasks.count}.by(-1)
+      expect { action }.to change { project.tasks.count }.by(-1)
     end
   end
 

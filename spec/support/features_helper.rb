@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module FeaturesHelper
   def login(user)
     visit '/#login'
@@ -7,7 +8,7 @@ module FeaturesHelper
   end
 
   def default_user_password
-    12345678
+    12_345_678
   end
 
   def reload

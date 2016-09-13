@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class Comment < ApplicationRecord
   mount_uploader :attachment, FileUploader
   belongs_to :task

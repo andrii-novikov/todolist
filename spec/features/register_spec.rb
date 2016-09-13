@@ -1,12 +1,13 @@
+# frozen_string_literal: true
 require 'rails_helper'
 
-feature 'Register page', js:true do
-  let(:attrs) {attributes_for :user}
-  let(:user) {create(:user)}
+feature 'Register page', js: true do
+  let(:attrs) { attributes_for :user }
+  let(:user) { create(:user) }
   before  { visit '/#/register' }
 
   context 'valid data' do
-    before  do
+    before do
       fill_in('Email', with: attrs[:uid])
       fill_in('Password', with: attrs[:password])
       click_on 'register'

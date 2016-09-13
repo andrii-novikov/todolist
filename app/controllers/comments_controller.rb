@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class CommentsController < ApplicationController
   load_and_authorize_resource :task
   load_and_authorize_resource :comment, through: :task
@@ -15,6 +16,7 @@ class CommentsController < ApplicationController
   end
 
   private
+
   def comment_params
     params.permit(:task_id, :text, :attachment)
   end

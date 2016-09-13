@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class ProjectsController < ApplicationController
   load_and_authorize_resource
 
@@ -17,7 +18,8 @@ class ProjectsController < ApplicationController
   end
 
   private
+
   def project_params
-    params.require(:project).permit(:title).merge(user:current_user)
+    params.require(:project).permit(:title).merge(user: current_user)
   end
 end

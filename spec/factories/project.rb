@@ -1,6 +1,7 @@
+# frozen_string_literal: true
 FactoryGirl.define do
   factory :project do
-    title {FFaker::LoremUA.words(2).join(' ')}
+    title { FFaker::LoremUA.words(2).join(' ') }
     user
 
     factory :project_with_tasks do

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 if task.errors.any?
   json.msg task.errors.full_messages.join('\n')
 else

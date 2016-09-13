@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module OmniAuthHelper
   def configure_omniauth
     mock_auth

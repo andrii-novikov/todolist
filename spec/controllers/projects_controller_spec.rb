@@ -1,11 +1,12 @@
+# frozen_string_literal: true
 require 'rails_helper'
 
 RSpec.describe ProjectsController, type: :controller do
-  let(:user) {create(:user)}
-  let!(:project) {create(:project, user:user)}
+  let(:user) { create(:user) }
+  let!(:project) { create(:project, user: user) }
 
   before do
-    allow(controller).to receive(:current_user) {user}
+    allow(controller).to receive(:current_user) { user }
   end
 
   describe 'GET index' do
@@ -24,7 +25,7 @@ RSpec.describe ProjectsController, type: :controller do
     before do
       get :show,
           format: :json,
-          params: { id:project.id }
+          params: { id: project.id }
     end
 
     it 'render :show' do
@@ -37,9 +38,9 @@ RSpec.describe ProjectsController, type: :controller do
   end
 
   describe 'POST create' do
-    let(:attrs) {attributes_for(:project)}
+    let(:attrs) { attributes_for(:project) }
     before do
-      post :create, format: :json, params: {project: attrs}
+      post :create, format: :json, params: { project: attrs }
     end
 
     it 'render :create' do
@@ -52,14 +53,14 @@ RSpec.describe ProjectsController, type: :controller do
   end
 
   describe 'PUT update' do
-    let(:new_title) {'new_title'}
+    let(:new_title) { 'new_title' }
     before do
       put :update,
           format: :json,
-          params: { id:project.id, project: { title: new_title }}
+          params: { id: project.id, project: { title: new_title } }
     end
 
-    it 'render :update'do
+    it 'render :update' do
       expect(response).to render_template(:update)
     end
 
@@ -70,7 +71,7 @@ RSpec.describe ProjectsController, type: :controller do
 
   describe 'DELETE destroy' do
     let(:action) do
-      post :destroy, format: :json, params: {id:project.id}
+      post :destroy, format: :json, params: { id: project.id }
     end
 
     it 'render :destroy' do
@@ -79,8 +80,7 @@ RSpec.describe ProjectsController, type: :controller do
     end
 
     it 'delete project' do
-      expect {action}.to change {user.projects.count}.by(-1)
+      expect { action }.to change { user.projects.count }.by(-1)
     end
   end
-
 end

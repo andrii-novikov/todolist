@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class TasksController < ApplicationController
   load_and_authorize_resource :project, thorough: :current_user
   load_and_authorize_resource :task
@@ -22,6 +23,7 @@ class TasksController < ApplicationController
   end
 
   private
+
   def task_params
     params.fetch(:task).permit(:title, :project_id, :deadline, :done, :status, :order)
   end

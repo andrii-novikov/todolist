@@ -1,6 +1,7 @@
+# frozen_string_literal: true
 require 'rails_helper'
 
-feature 'Home page', js:true do
+feature 'Home page', js: true do
   before do
     visit root_path
   end
@@ -15,7 +16,7 @@ feature 'Home page', js:true do
   end
 
   context 'Authorized user' do
-    let!(:user) {create(:user_with_projects, uid:'a@a.ru', email: 'a@a.ru', password: default_user_password)}
+    let!(:user) { create(:user_with_projects, uid: 'a@a.ru', email: 'a@a.ru', password: default_user_password) }
 
     scenario 'visit home page' do
       login(user)

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 source 'https://rubygems.org'
 
 gem 'rails', '~> 5.0.0'
@@ -42,7 +43,7 @@ group :development, :test do
   gem 'ffaker'
   gem 'rubocop'
   gem 'simplecov'
-  gem "awesome_print"
+  gem 'awesome_print'
 end
 
 group :development do
