@@ -1,12 +1,12 @@
 %form.form{'ng-submit': 'submitRegistration(user)', 'ng-init':"user = {}"}
-  .form-group.email
+  .form-group.email{'ng-class':'{"has-error":error("email")}'}
     %input.form-control{'ng-model': 'user.email', placeholder: 'Email', type: 'email'}
-    %span.help-block
-  .form-group.username
+    %span.help-block {{error("email")}}
+  .form-group.username{'ng-class':'{"has-error":error("username")}'}
     %input.form-control{'ng-model': 'user.name', placeholder: 'Username', type: 'text'}
-    %span.help-block
-  .form-group.password
+    %span.help-block {{error("username")}}
+  .form-group.password{'ng-class':'{"has-error":error("password")}'}
     %input.form-control{'ng-model': 'user.password', placeholder: 'Password', type: 'password'}
-    %span.help-block
+    %span.help-block {{error("password")}}
 
   %input.btn.btn-success#register{type: 'submit', value: 'Register'}
