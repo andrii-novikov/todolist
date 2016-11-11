@@ -12,3 +12,8 @@
 !/log/.keep
 /tmp
 .idea/
+/public/uploads
+coverage/
+
+# Ignore application configuration
+/config/application.yml

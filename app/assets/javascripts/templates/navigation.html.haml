@@ -11,4 +11,4 @@
       %li{'ng-hide': 'user.signedIn'}
         %a{'ui-sref': 'register'} Register
       %li{'ng-show': 'user.signedIn'}
-        %a{'ng-click':'signOut()'} Log Out({{user.username || user.email}})
+        %a{'ng-click':'signOut()'} Log Out({{user.name || user.email}})

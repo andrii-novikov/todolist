@@ -5,16 +5,16 @@
     .panel-heading
       New comment
     .panel-body
-      %textarea{'ng-model':'newComment.text'}
-      %flow-btn.btn.btn-info Upload File
+      %textarea.comment-text{'ng-model':'newComment.text'}
+      %flow-btn.btn.btn-info{'flow-attrs':"{id:'fileInput'}"} Upload File
       %span{'ng-repeat': 'file in $flow.files'}
         {{file.name}}
       .row.text-center
-        %button.btn.btn-success{'ng-click':'add()', 'ng-disabled':'!canAdd()'}
+        %button.place-comment.btn.btn-success{'ng-click':'add()', 'ng-disabled':'!canAdd()'}
           %i.glyphicon.glyphicon-comment
           Place comment
 
-  .panel.panel-info{'ng-repeat':'comment in task.comments | orderBy: "-created_at" '}
+  .panel.panel-info.comment{'ng-repeat':'comment in task.comments | orderBy: "-created_at" ', id: '{{task}}'}
     .panel-heading
       {{comment.created_at | date:'dd MMMM yyyy HH:mm:ss'}}
       %i.delete.glyphicon.glyphicon-trash{'ng-click':'delete(comment)'}

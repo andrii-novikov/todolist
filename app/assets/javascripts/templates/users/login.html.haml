@@ -4,5 +4,5 @@
   .form-group
     %input.form-control{'ng-model': 'loginForm.password', placeholder: 'Password', type: 'password'}
   .form-group
-    %a.btn.btn-info{'ng-click':"authenticate('facebook')"} Log In with Facebook
-  %input.btn.btn-success{type: 'submit', value: 'Log In'}
+    %input.btn.btn-success#login{type: 'submit', value: 'Login with email'}
+    %a.btn.btn-info#facebook{'ng-click':"authenticate('facebook')"} Login with Facebook
